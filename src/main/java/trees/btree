@@ -1,0 +1,38 @@
+#conditions:
+
+import needArmor?:"ai_cup_22.ai.btasks.conditions.NeedArmor"
+
+#tasks:
+import searchLoot:"ai_cup_22.ai.btasks.SearchLoot"
+import goTo:"ai_cup_22.ai.btasks.GoToPoint"
+import pickUp:"ai_cup_22.ai.btasks.PickUpLoot"
+import health:"ai_cup_22.ai.btasks.UseShieldPotion"
+import walk:"ai_cup_22.ai.btasks.WalkToCenter"
+import runFromBorder:"ai_cup_22.ai.btasks.RunFromBorder"
+
+
+subtree name:"armor"
+    sequence
+        needArmor?
+        selector
+            health
+            sequence
+                selector
+                    searchLoot type:"SHIELD"
+                    walk
+                goTo
+                pickUp
+                health
+
+
+
+
+root
+    sequence
+        runFromBorder
+        selector
+            $armor
+            walk
+
+
+
